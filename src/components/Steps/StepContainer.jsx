@@ -56,8 +56,6 @@ const StepContainer = () => {
     const productDetails = methods.watch();
     let flag = true;
     for (let key in productDetails) {
-      console.log(productDetails[key]);
-      
       if (!productDetails[key]) {
         if (productDetails["images"]) {
           continue
