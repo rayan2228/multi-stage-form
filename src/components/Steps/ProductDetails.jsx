@@ -1,8 +1,17 @@
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
+
 import { useFormContext } from "react-hook-form";
 const ProductDetails = () => {
-  const { register } = useFormContext();
+  const { register, watch } = useFormContext();
+  watch([
+    "title",
+    "description",
+    "category",
+    "regularPrice",
+    "extraPrice",
+    "taxAmount",
+  ]);
   return (
     <Box
       component="div"

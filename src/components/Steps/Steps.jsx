@@ -3,9 +3,6 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import PropTypes from "prop-types";
 import { styled } from "@mui/material/styles";
-import SettingsIcon from "@mui/icons-material/Settings";
-import GroupAddIcon from "@mui/icons-material/GroupAdd";
-import VideoLabelIcon from "@mui/icons-material/VideoLabel";
 import StepConnector, {
   stepConnectorClasses,
 } from "@mui/material/StepConnector";

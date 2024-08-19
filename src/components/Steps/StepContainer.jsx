@@ -8,12 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   stepBackward,
   stepForward,
+  stepRest,
 } from "../../features/stepCounter/stepCounterSlice";
 import Review from "./Review";
 import { useForm, FormProvider } from "react-hook-form";
-import { useState } from "react";
+import { addProduct } from "../../features/productsData/productDataSlice";
 const StepContainer = () => {
-  const [reviewData, setReviewData] = useState();
   const dispatch = useDispatch();
   let stepValue = useSelector((state) => state.stepCounter.step) || false;
   const stepsNameLength = useSelector(
@@ -28,14 +28,20 @@ const StepContainer = () => {
       case 2:
         return <AddAPhoto />;
       case 3:
-        return <Review data={reviewData} />;
+        return <Review />;
     }
   };
 
   const methods = useForm();
+
   const onSubmit = (data) => {
-    setReviewData(data);
+    dispatch(addProduct(data));
+    dispatch(stepRest());
+    methods.reset();
   };
+  const dataShow = useSelector((state) => state.products.products);
+  console.log(dataShow);
+
   return (
     <Box
       component="div"
@@ -75,7 +81,7 @@ const StepContainer = () => {
                 type="submit"
                 key={"submit"}
               >
-                Submit
+                Add Product
               </Button>
             ) : (
               <Button

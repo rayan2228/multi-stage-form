@@ -18,10 +18,15 @@ export const stepCounterSlice = createSlice({
       if (state.step) {
         state.step -= 1
       }
+    },
+    stepRest: (state) => {
+      if (state.step) {
+        state.step = 0
+      }
     }
   },
 })
 
-export const { stepForward,stepBackward } = stepCounterSlice.actions
+export const { stepForward,stepBackward ,stepRest} = stepCounterSlice.actions
 
 export default stepCounterSlice.reducer

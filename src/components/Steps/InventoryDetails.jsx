@@ -3,7 +3,8 @@ import Box from "@mui/material/Box";
 import { useFormContext } from "react-hook-form";
 
 const InventoryDetails = () => {
-  const { register } = useFormContext();
+  const { register,watch } = useFormContext();
+  watch(["weight","height","length","width","totalStock"])
   return (
     <Box
       component="div"

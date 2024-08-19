@@ -3,9 +3,10 @@ import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useFormContext } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
+import { handleImagePreviews } from "../../utils/imagePreview";
 const AddAPhoto = () => {
   const VisuallyHiddenInput = styled("input")({
     clip: "rect(0 0 0 0)",
@@ -19,24 +20,16 @@ const AddAPhoto = () => {
     width: 1,
   });
   const { register, watch } = useFormContext();
-  const imageFile = watch("images");
+  const images = watch("images");
   const [imagePreviews, setImagePreviews] = useState([]);
-  // console.log(imageFile);
 
-  const handleImagePreviews = (event) => {
-    const files = Array.from(event.target.files);
-    const previews = files.map((file) => {
-      const reader = new FileReader();
-      return new Promise((resolve) => {
-        reader.onloadend = () => {
-          resolve(reader.result);
-        };
-        reader.readAsDataURL(file);
-      });
-    });
-
-    Promise.all(previews).then((images) => setImagePreviews(images));
-  };
+  useEffect(() => {
+    if (images && images.length > 0) {
+      handleImagePreviews(Array.from(images), setImagePreviews);
+    } else {
+      setImagePreviews([]);
+    }
+  }, [images]);
   return (
     <Box
       component="div"
