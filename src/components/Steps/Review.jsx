@@ -1,6 +1,6 @@
 
 
-const Review = () => {
+const Review = ({data}) => {
   return (
     <div>Review</div>
   )

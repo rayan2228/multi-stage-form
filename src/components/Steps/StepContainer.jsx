@@ -11,7 +11,9 @@ import {
 } from "../../features/stepCounter/stepCounterSlice";
 import Review from "./Review";
 import { useForm, FormProvider } from "react-hook-form";
+import { useState } from "react";
 const StepContainer = () => {
+  const [reviewData, setReviewData] = useState();
   const dispatch = useDispatch();
   let stepValue = useSelector((state) => state.stepCounter.step) || false;
   const stepsNameLength = useSelector(
@@ -26,13 +28,13 @@ const StepContainer = () => {
       case 2:
         return <AddAPhoto />;
       case 3:
-        return <Review />;
+        return <Review data={reviewData} />;
     }
   };
 
   const methods = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    setReviewData(data);
   };
   return (
     <Box
