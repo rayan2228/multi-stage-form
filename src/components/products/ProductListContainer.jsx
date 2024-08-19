@@ -69,10 +69,6 @@ const ProductListContainer = () => {
       headerName: "Total Stock",
     },
     {
-      field: "totalStock",
-      headerName: "Total Stock",
-    },
-    {
       field: "actions",
       headerName: "Actions",
       renderCell: (params) => (
