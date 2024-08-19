@@ -14,6 +14,7 @@ import Review from "./Review";
 import { useForm, FormProvider } from "react-hook-form";
 import { addProduct } from "../../features/productsData/productDataSlice";
 import Title from "../Title";
+import { Bounce, ToastContainer, toast } from "react-toastify";
 const StepContainer = () => {
   const dispatch = useDispatch();
   let stepValue = useSelector((state) => state.stepCounter.step) || false;
@@ -34,11 +35,46 @@ const StepContainer = () => {
   };
 
   const methods = useForm();
-
   const onSubmit = (data) => {
     dispatch(addProduct(data));
     dispatch(stepRest());
     methods.reset();
+    toast.success("Product added successfully", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+
+  const handleNext = () => {
+    const productDetails = methods.watch();
+    let flag = true;
+    for (let key in productDetails) {
+      if (!productDetails[key]) {
+        flag = false;
+      }
+    }
+    if (flag) {
+      dispatch(stepForward());
+    } else {
+      toast.error("All fields are required", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    }
   };
 
   return (
@@ -52,7 +88,8 @@ const StepContainer = () => {
         gap: "20px",
       }}
     >
-      <Title text={"Add A Product"}/>
+      <ToastContainer />
+      <Title text={"Add A Product"} />
       <Steps />
       <FormProvider {...methods}>
         <Box component="form" onSubmit={methods.handleSubmit(onSubmit)}>
@@ -87,7 +124,7 @@ const StepContainer = () => {
               <Button
                 variant="contained"
                 type="button"
-                onClick={() => dispatch(stepForward())}
+                onClick={() => handleNext()}
               >
                 Next
               </Button>

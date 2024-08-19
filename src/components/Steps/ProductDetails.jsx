@@ -3,6 +3,8 @@ import Box from "@mui/material/Box";
 
 import { useFormContext } from "react-hook-form";
 const ProductDetails = () => {
+
+  
   const { register, watch } = useFormContext();
   watch([
     "title",
@@ -12,6 +14,7 @@ const ProductDetails = () => {
     "extraPrice",
     "taxAmount",
   ]);
+
   return (
     <Box
       component="div"
@@ -26,7 +29,7 @@ const ProductDetails = () => {
       autoComplete="off"
     >
       <TextField
-        {...register("title", { required: true })}
+        {...register("title")}
         id="outlined-basic"
         label="Title"
         variant="outlined"
@@ -34,7 +37,7 @@ const ProductDetails = () => {
         name="title"
       />
       <TextField
-        {...register("description", { required: true })}
+        {...register("description")}
         id="outlined-basic"
         label="Description"
         variant="outlined"
@@ -42,7 +45,7 @@ const ProductDetails = () => {
         name="description"
       />
       <TextField
-        {...register("category", { required: true })}
+        {...register("category")}
         id="outlined-basic"
         label="Category"
         variant="outlined"
@@ -50,7 +53,7 @@ const ProductDetails = () => {
         name="category"
       />
       <TextField
-        {...register("regularPrice", { required: true })}
+        {...register("regularPrice")}
         id="outlined-basic"
         label="Regular Price"
         variant="outlined"
@@ -58,7 +61,7 @@ const ProductDetails = () => {
         name="regularPrice"
       />
       <TextField
-        {...register("extraPrice", { required: true })}
+        {...register("extraPrice")}
         id="outlined-basic"
         label="Extra Price"
         variant="outlined"
@@ -66,7 +69,7 @@ const ProductDetails = () => {
         name="extraPrice"
       />
       <TextField
-        {...register("taxAmount", { required: true })}
+        {...register("taxAmount")}
         id="outlined-basic"
         label="Tax Amount"
         variant="outlined"
