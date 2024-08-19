@@ -1,6 +1,8 @@
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
+import { useFormContext } from "react-hook-form";
 const ProductDetails = () => {
+  const { register } = useFormContext();
   return (
     <Box
       component="div"
@@ -15,46 +17,52 @@ const ProductDetails = () => {
       autoComplete="off"
     >
       <TextField
+        {...register("title", { required: true })}
         id="outlined-basic"
         label="Title"
         variant="outlined"
         fullWidth
-        required
+        name="title"
       />
       <TextField
+        {...register("description", { required: true })}
         id="outlined-basic"
         label="Description"
         variant="outlined"
         fullWidth
-        required
+        name="description"
       />
       <TextField
+        {...register("category", { required: true })}
         id="outlined-basic"
         label="Category"
         variant="outlined"
         fullWidth
-        required
+        name="category"
       />
       <TextField
+        {...register("regularPrice", { required: true })}
         id="outlined-basic"
         label="Regular Price"
         variant="outlined"
         fullWidth
-        required
+        name="regularPrice"
       />
       <TextField
+        {...register("extraPrice", { required: true })}
         id="outlined-basic"
         label="Extra Price"
         variant="outlined"
         fullWidth
-        required
+        name="extraPrice"
       />
       <TextField
+        {...register("taxAmount", { required: true })}
         id="outlined-basic"
         label="Tax Amount"
         variant="outlined"
         fullWidth
-        required
+        name="taxAmount"
       />
     </Box>
   );

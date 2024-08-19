@@ -2,6 +2,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { useFormContext } from "react-hook-form";
 const AddAPhoto = () => {
   const VisuallyHiddenInput = styled("input")({
     clip: "rect(0 0 0 0)",
@@ -14,6 +15,7 @@ const AddAPhoto = () => {
     whiteSpace: "nowrap",
     width: 1,
   });
+  const { register } = useFormContext();
   return (
     <Box
       component="div"
@@ -35,7 +37,12 @@ const AddAPhoto = () => {
         startIcon={<CloudUploadIcon />}
       >
         Upload file
-        <VisuallyHiddenInput type="file" multiple />
+        <VisuallyHiddenInput
+          type="file"
+          multiple
+          name="images"
+          {...register("images", { required: true })}
+        />
       </Button>
     </Box>
   );

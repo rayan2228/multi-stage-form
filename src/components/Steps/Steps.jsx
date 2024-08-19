@@ -10,6 +10,7 @@ import StepConnector, {
   stepConnectorClasses,
 } from "@mui/material/StepConnector";
 import { useSelector } from "react-redux";
+import { Inventory, PhotoAlbum, ProductionQuantityLimits, Reviews } from "@mui/icons-material";
 const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
     top: 22,
@@ -61,9 +62,10 @@ function ColorlibStepIcon(props) {
   const { active, completed, className } = props;
 
   const icons = {
-    1: <SettingsIcon />,
-    2: <GroupAddIcon />,
-    3: <VideoLabelIcon />,
+    1: <ProductionQuantityLimits />,
+    2: <Inventory />,
+    3: <PhotoAlbum />,
+    4: <Reviews />,
   };
 
   return (
