@@ -6,6 +6,7 @@ import { deleteProduct } from "../../features/productsData/productDataSlice";
 
 import {  useState } from "react";
 import ModalContainer from "./ModalContainer";
+import Title from "../Title";
 
 const ProductListContainer = () => {
   const [open, setOpen] = useState(false);
@@ -102,6 +103,7 @@ const ProductListContainer = () => {
 
   return (
     <Box sx={{ height: 400, width: "80vw", margin: "50px auto" }}>
+      <Title text={"Product Lists"}/>
       <DataGrid
         rows={products}
         columns={columns}

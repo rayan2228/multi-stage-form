@@ -13,6 +13,7 @@ import {
 import Review from "./Review";
 import { useForm, FormProvider } from "react-hook-form";
 import { addProduct } from "../../features/productsData/productDataSlice";
+import Title from "../Title";
 const StepContainer = () => {
   const dispatch = useDispatch();
   let stepValue = useSelector((state) => state.stepCounter.step) || false;
@@ -47,10 +48,11 @@ const StepContainer = () => {
         display: "flex",
         flexDirection: "column",
         width: "80vw",
-        margin: "auto",
+        margin: "50px auto",
         gap: "20px",
       }}
     >
+      <Title text={"Add A Product"}/>
       <Steps />
       <FormProvider {...methods}>
         <Box component="form" onSubmit={methods.handleSubmit(onSubmit)}>
