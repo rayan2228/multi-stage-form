@@ -39,8 +39,6 @@ const StepContainer = () => {
     dispatch(stepRest());
     methods.reset();
   };
-  const dataShow = useSelector((state) => state.products.products);
-  console.log(dataShow);
 
   return (
     <Box
@@ -48,7 +46,7 @@ const StepContainer = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        width: "60vw",
+        width: "80vw",
         margin: "auto",
         gap: "20px",
       }}

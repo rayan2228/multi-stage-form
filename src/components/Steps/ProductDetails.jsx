@@ -18,7 +18,7 @@ const ProductDetails = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        width: "60vw",
+        width: "80vw",
         margin: "auto",
         gap: "20px",
       }}

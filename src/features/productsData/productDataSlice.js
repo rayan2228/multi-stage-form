@@ -9,16 +9,15 @@ export const productDataSlice = createSlice({
     initialState,
     reducers: {
         addProduct: (state, { payload }) => {
-            state.products.push(payload)
+            state.products.push({ ...payload, id: state.products.length + 1 })
         },
-        stepBackward: (state) => {
-            if (state.step) {
-                state.step -= 1
-            }
+        deleteProduct: (state, { payload }) => {
+            const filteredData = state.products.filter((value) => value.id !== payload)
+            state.products = filteredData
         }
     },
 })
 
-export const { addProduct, stepBackward ,} = productDataSlice.actions
+export const { addProduct, deleteProduct } = productDataSlice.actions
 
 export default productDataSlice.reducer
