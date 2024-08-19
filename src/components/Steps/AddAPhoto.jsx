@@ -35,7 +35,7 @@ const AddAPhoto = () => {
         startIcon={<CloudUploadIcon />}
       >
         Upload file
-        <VisuallyHiddenInput type="file" multiple/>
+        <VisuallyHiddenInput type="file" multiple />
       </Button>
     </Box>
   );
