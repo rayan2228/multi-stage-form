@@ -9,7 +9,8 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "600px",
+  width: "60vw",
+  height:"60vh",
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -32,7 +33,7 @@ const ModalContainer = ({ handleClose, product, open }) => {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <Card>
+        <Card sx={{width:"60vw" ,height:"60vh",overflow:"scroll"}}>
           {imagePreviews.length > 0 && (
             <ImageList sx={{}} cols={3}>
               {imagePreviews.map((preview, index) => (
